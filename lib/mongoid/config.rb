@@ -198,6 +198,16 @@ module Mongoid
     # See https://jira.mongodb.org/browse/MONGOID-5658 for more details.
     option :around_callbacks_for_embeds, default: true
 
+    # When this flag is false, performing a serializable_hash(only: []) will
+    # result in all fields being included. This is the traditional (and default)
+    # behavior in Mongoid 9 and earlier.
+    #
+    # Setting this flag to true will change the behavior to suppress all fields
+    # in the serialized hash. This will be the default in Mongoid 10.
+    #
+    # See https://jira.mongodb.org/browse/MONGOID-5892 for more details.
+    option :serializable_hash_with_legacy_only, default: false
+
     # Returns the Config singleton, for use in the configure DSL.
     #
     # @return [ self ] The Config singleton.
